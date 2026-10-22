@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUXHIQ | Independent Game Developer</title>
+    
+    <!-- Modern Yazı Tipi -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome İkon Kütüphanesi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #080808;
+            color: #d1d1d1;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 20%, #151518 0%, #080808 85%);
+            z-index: -1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        a:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 4px;
+        }
+
+        header {
+            padding: 1.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(8, 8, 8, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #888888;
+        }
+
+        nav ul li a:hover {
+            color: #ffffff;
+        }
+
+        .hero {
+            padding: 6rem 0 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 900;
+            letter-spacing: 6px;
+            color: #ffffff;
+            margin-bottom: 0.2rem;
+            text-transform: uppercase;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero p {
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            color: #777777;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .project-section {
+            padding: 3rem 0 5rem 0;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: "";
+            flex-grow: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: #111113;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .project-img {
+            height: 220px;
+            background-color: #18181c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .project-img::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), #111113);
+        }
+
+        .project-img i {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 4rem;
+            z-index: 1;
+        }
+
+        .project-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #888888;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 0.6rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .project-content p {
+            font-size: 0.88rem;
+            color: #888888;
+            margin-bottom: 1.8rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        a.btn:hover {
+            background-color: #ffffff;
+            color: #080808;
+            border-color: #ffffff;
+        }
+
+        .btn-disabled {
+            color: #777777;
+            cursor: not-allowed;
+        }
+        .about-section {
+            padding: 5rem 0;
+            background-color: #0b0b0d;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-text p {
+            color: #999999;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .ide-window {
+            background-color: #121215;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .ide-header {
+            background-color: #1a1a1e;
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .ide-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background-color: #ff5f56; }
+        .dot-yellow { background-color: #ffbd2e; }
+        .dot-green { background-color: #27c93f; }
+
+        .ide-title {
+            font-size: 0.75rem;
+            color: #666666;
+            margin-left: auto;
+            font-family: monospace;
+        }
+
+        .ide-body {
+            padding: 1.5rem;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: #d4d4d4;
+            overflow-x: auto;
+        }
+
+        .code-keyword { color: #569cd6; }
+        .code-string { color: #ce9178; }
+        .code-comment { color: #6a9955; }
+        .code-property { color: #9cdcfe; }
+
+        footer {
+            padding: 6rem 0 3rem 0;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .contact-sub {
+            color: #777777;
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .social-card {
+            background: #111113;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1rem 1.8rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #cccccc;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .social-card i {
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+
+        .social-card:hover {
+            background-color: #ffffff;
+            color: #080808;
+            border-color: #ffffff;
+            transform: translateY(-4px);
+        }
+
+        .social-card:hover i {
+            color: #080808;
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            color: #444444;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .about-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            header .container { flex-direction: column; gap: 1rem; }
+            nav ul { gap: 1.2rem; }
+            .hero { padding: 4rem 0 2rem 0; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .social-links { flex-direction: column; align-items: stretch; padding: 0 1rem; }
+            .social-card { justify-content: center; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">RUXHIQ</div>
+            <nav aria-label="Ana menü">
+                <ul>
+                    <li><a href="#projects">Oyunlar</a></li>
+                    <li><a href="#about">Hakkımda</a></li>
+                    <li><a href="#contact">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <section class="hero">
+        <div class="container">
+            <h1>RUXHIQ</h1>
+            <p>Independent Game Developer & Creator</p>
+        </div>
+    </section>
+    <section class="container project-section" id="projects">
+        
+        <h2 class="section-title">Oyunlar & Projeler</h2>
+        <div class="projects-grid" style="margin-bottom: 4rem;">
+            
+            <div class="project-card">
+                <div class="project-img">
+                    <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
+                </div>
+                <div class="project-content">
+                    <div>
+                        <div class="project-tag">İlk Oyun Projesi</div>
+                        <h3>Project: Echo</h3>
+                        <p>Oyun geliştirme yolculuğumun ilk oyunu. Çok yakında oynanabilir sürümüyle burada sergilenecek.</p>
+                    </div>
+                    <span class="btn btn-disabled" aria-disabled="true">Yakında</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <i class="fa-solid fa-code" aria-hidden="true"></i>
+                </div>
+                <div class="project-content">
+                    <div>
+                        <div class="project-tag">Web & Yazılım</div>
+                        <h3>ruxhiq.com</h3>
+                        <p>Kendi bağımsız oyunlarımı ve yazılım serüvenimi sergilediğim kişisel geliştirici portfolyom.</p>
+                    </div>
+                    <a href="https://github.com/ruxhiq" target="_blank" rel="noopener noreferrer" class="btn">GitHub'da Gör</a>
+                </div>
+            </div>
+
+        </div>
+
+        <h2 class="section-title">Geliştirme Aşamasındaki Fikirler</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="project-img">
+                    <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+                </div>
+                <div class="project-content">
+                    <div>
+                        <div class="project-tag">Konsept / RPG</div>
+                        <h3>Voidwalker</h3>
+                        <p>Atmosferik yapısıyla yapay zeka entegrasyonlu bağımsız bir RPG oyun fikri.</p>
+                    </div>
+                    <span class="btn btn-disabled" aria-disabled="true">Yakında</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <i class="fa-solid fa-brain" aria-hidden="true"></i>
+                </div>
+                <div class="project-content">
+                    <div>
+                        <div class="project-tag">Yapay Zeka & Mekanik</div>
+                        <h3>Sub-Zero</h3>
+                        <p>Oyun içi dinamikleri ve düşman davranışlarını yapay zeka algoritmalarıyla şekillendirdiğim prototip çalışma.</p>
+                    </div>
+                    <span class="btn btn-disabled" aria-disabled="true">Yakında</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-text">
+                    <h2>Hakkımda</h2>
+                    <p>Merhaba, ben <strong>RUXHIQ</strong>. Bilgisayar programcılığı öğrencisi ve bağımsız bir oyun geliştiricisiyim. Yazılım ve oyun tasarımı dünyasındaki ilk adımlarımı atarken, fikirlerimi kodlara ve oynanabilir deneyimlere dönüştürüyorum.</p>
+                    <p>Öğrenme sürecimde yapay zeka araçlarını, modern teknolojileri ve kreatif oyun fikirlerini bir araya getiriyorum. Bu site; geliştirdiğim projeleri, deneysel çalışmalarımı ve oyun geliştirme yolculuğumu paylaştığım kişisel alanım.</p>
+                </div>
+                
+                <div class="ide-window">
+                    <div class="ide-header">
+                        <div class="ide-dot dot-red"></div>
+                        <div class="ide-dot dot-yellow"></div>
+                        <div class="ide-dot dot-green"></div>
+                        <div class="ide-title">developer.py</div>
+                    </div>
+                    <div class="ide-body">
+                        <span class="code-comment"># RUXHIQ Developer Profile</span><br>
+                        <span class="code-keyword">class</span> <span class="code-property">Developer</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-property">__init__</span>(self):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.name = <span class="code-string">"RUXHIQ"</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.role = <span class="code-string">"Indie Game Dev"</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.education = <span class="code-string">"Computer Programming"</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.focus = [<span class="code-string">"Game Design"</span>, <span class="code-string">"AI"</span>, <span class="code-string">"Python"</span>]<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-property">build</span>(self):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"Turning ideas into playable worlds."</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 class="contact-title">LET'S BUILD SOMETHING TOGETHER</h2>
+            <p class="contact-sub">Bana ulaşmak veya projelerimi takip etmek için aşağıdaki platformları kullanabilirsin.</p>
+            
+            <div class="social-links">
+                <a href="mailto:ruxhiq@gmail.com" class="social-card">
+                    <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                    <span>ruxhiq@gmail.com</span>
+                </a>
+                <a href="https://github.com/ruxhiq" target="_blank" rel="noopener noreferrer" class="social-card">
+                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                    <span>github/ruxhiq</span>
+                </a>
+                <a href="https://instagram.com/ruxhiq" target="_blank" rel="noopener noreferrer" class="social-card">
+                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                    <span>@ruxhiq</span>
+                </a>
+            </div>
+
+            <div class="copyright">
+                &copy; 2026 RUXHIQ. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
