@@ -416,7 +416,7 @@
         const gameData = {
             playerName: "",
             score: 0,
-            money: 100,
+            money: 0,   // <-- 0 yaptık
             lives: 3,
             selectedChar: 'spiderman',
             selectedSlipper: 'siyah',
@@ -452,7 +452,7 @@
                 try {
                     const parsed = JSON.parse(saved);
                     gameData.playerName = parsed.playerName || "";
-                    gameData.money = parsed.money !== undefined ? parsed.money : 100;
+                    gameData.money = parsed.money !== undefined ? parsed.money : 0;  
                     gameData.selectedChar = parsed.selectedChar || 'spiderman';
                     gameData.selectedSlipper = parsed.selectedSlipper || 'siyah';
                     gameData.unlockedChars = parsed.unlockedChars || ['spiderman'];
