@@ -728,9 +728,9 @@
             startGame();
         });
 
-        function startGame() {
+       function startGame() {
             score = 0;
-            money = 0;
+            money = gameData.money; // Kayıtlı paran oyuna aktarılıyor
             lives = 3;
             slippers = [];
             waterSplashes = [];
@@ -915,8 +915,10 @@
                         score += pts;
                         if (b.rewardMoney > 0) {
                             money += b.rewardMoney;
+                            gameData.money = money; // Parayı anında ana objeye işliyoruz
+                            saveGame();             // Tarayıcıya kalıcı olarak kaydediyoruz
                             addFloatingText(`+${pts} Puan | +$${b.rewardMoney}`, b.x, b.y, '#34d399');
-                        } else {
+                 } else {
                             addFloatingText(`+${pts} Puan`, b.x, b.y, '#38bdf8');
                         }
 
@@ -1169,11 +1171,13 @@
             gameOverScreen.classList.remove('hidden');
         }
 
-        btnContinue.addEventListener('click', () => {
-            if (money >= 50) {
-                money -= 50;
-                lives = 3;
-                updateHud();
+                btnContinue.addEventListener('click', () => {
+                    if (money >= 50) {
+                        money -= 50;
+                        gameData.money = money; // Harcanan parayı düşüp kaydediyoruz
+                        saveGame();
+                        lives = 3;
+                     updateHud();
                 gameOverScreen.classList.add('hidden');
                 soundEngine.startChiptuneMusic();
                 gameState = 'PLAYING';
