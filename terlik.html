@@ -437,17 +437,16 @@
 
         const soundEngine = new SoundEngine();
 
-        const gameData = {
-            playerName: "",
-            score: 0,
-            money: 0,   // <-- 0 yaptık
-            lives: 3,
-            selectedChar: 'spiderman',
-            selectedSlipper: 'siyah',
-            unlockedChars: ['spiderman'],
-            unlockedSlippers: ['siyah'],
-            highScores: []
-        };
+     const gameData = {
+    playerName: "",
+    score: 0,
+    money: 0,
+    lives: 3,
+    selectedChar: 'spiderman',
+    selectedSlipper: 'siyah',
+    unlockedChars: ['spiderman'],
+    unlockedSlippers: ['siyah']
+};
 
         const CHARACTERS = [
             { id: 'spiderman', name: 'Spider-Man', price: 0, desc: 'Efsane Lider', symbol: '🕷️' },
@@ -498,6 +497,34 @@
             }));
         }
 
+        // KÜRESEL (ONLINE) SKOR TABLOSU FONKSİYONLARI
+const API_URL = 'https://6adb6fbe3b7e90b8208fef15.mockapi.io/api/v1/leaderboard';
+
+async function fetchOnlineLeaderboard() {
+    try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        gameData.highScores = data.sort((a, b) => b.score - a.score);
+        renderLeaderboardUI();
+    } catch (error) {
+        console.error("Küresel skorlar çekilemedi:", error);
+        lbList.innerHTML = `<div class="p-4 text-center text-rose-400 text-sm bg-slate-900/40 rounded-2xl border border-slate-800">İnternet bağlantısı kurulamadı!</div>`;
+    }
+}
+
+async function submitScoreOnline(playerName, scoreVal) {
+    if (scoreVal <= 0) return;
+    try {
+        await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: playerName, score: scoreVal })
+        });
+        fetchOnlineLeaderboard();
+    } catch (error) {
+        console.error("Skor sunucuya kaydedilemedi:", error);
+    }
+}
         loadSavedGame();
 
         const nameScreen = document.getElementById('name-screen');
@@ -636,7 +663,8 @@ btnPauseMenu.addEventListener('click', () => {
         });
 
         btnLeaderboard.addEventListener('click', () => {
-            renderLeaderboard();
+            lbList.innerHTML = `<div class="p-4 text-center text-cyan-400 text-sm bg-slate-900/40 rounded-2xl border border-slate-800">Küresel skorlar yükleniyor...</div>`;
+            fetchOnlineLeaderboard();
             leaderboardScreen.classList.remove('hidden');
         });
         btnLbBack.addEventListener('click', () => leaderboardScreen.classList.add('hidden'));
@@ -729,23 +757,25 @@ btnPauseMenu.addEventListener('click', () => {
             });
         }
 
-        function renderLeaderboard() {
+      function renderLeaderboardUI() {
             lbMyName.innerText = gameData.playerName || "Ferix";
             let myMaxScore = 0;
-            if (gameData.highScores.length > 0) {
-                myMaxScore = Math.max(...gameData.highScores.map(h => h.score));
+            if (gameData.highScores && gameData.highScores.length > 0) {
+                const userScores = gameData.highScores.filter(h => h.name === (gameData.playerName || "Ferix"));
+                if (userScores.length > 0) {
+                    myMaxScore = Math.max(...userScores.map(h => h.score));
+                }
             }
             lbMyHighscore.innerText = myMaxScore;
             lbMyMoney.innerText = `$${gameData.money}`;
 
             lbList.innerHTML = '';
-            if (gameData.highScores.length === 0) {
-                lbList.innerHTML = `<div class="p-4 text-center text-gray-500 text-sm bg-slate-900/40 rounded-2xl border border-slate-800">Henüz kayıtlı skorun yok. Oyuna başla ve şöhretler salonuna adını yazdır!</div>`;
+            if (!gameData.highScores || gameData.highScores.length === 0) {
+                lbList.innerHTML = `<div class="p-4 text-center text-gray-400 text-sm bg-slate-900/40 rounded-2xl border border-slate-800">Henüz küresel skor bulunmuyor. İlk skoru sen kaydet!</div>`;
                 return;
             }
 
-            const sorted = [...gameData.highScores].sort((a,b) => b.score - a.score);
-            sorted.forEach((item, index) => {
+            gameData.highScores.forEach((item, index) => {
                 const row = document.createElement('div');
                 row.className = `p-3.5 bg-slate-900 border rounded-2xl flex items-center justify-between shadow-lg ${index === 0 ? 'border-amber-500/80 bg-amber-950/20' : 'border-slate-800'}`;
                 row.innerHTML = `
@@ -1219,10 +1249,9 @@ btnPauseMenu.addEventListener('click', () => {
             gameState = 'GAMEOVER';
             soundEngine.stopChiptuneMusic();
             
-            if (score > 0) {
-                gameData.highScores.push({ name: gameData.playerName || "Ferix", score: score });
-                saveGame();
-            }
+           if (score > 0) {
+    submitScoreOnline(gameData.playerName || "Ferix", score);
+}
 
             gameOverPlayer.innerText = `Oyuncu: ${gameData.playerName || "Ferix"}`;
             finalScore.innerText = score;
