@@ -192,27 +192,51 @@
                 </div>
             </div>
         </div>
+                <!-- OYUN İÇİ DURDURMA / MENÜ EKRANI -->
+<div id="pause-screen" class="absolute inset-0 z-50 hidden flex flex-col items-center justify-center p-6 bg-black/80 backdrop-blur-md">
+    <div class="flex flex-col items-center max-w-xs w-full bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-2xl text-center gap-4">
+        <h2 class="title-font text-2xl text-cyan-400">Oyun Durduruldu</h2>
 
-        <!-- OYUN İÇİ ÜST BAR -->
-        <div id="game-hud" class="w-full p-4 flex items-center justify-between bg-slate-900/80 border-b border-slate-800/80 z-20 backdrop-blur-sm select-none hidden">
-            <div class="flex items-center gap-4">
-                <div class="flex flex-col">
-                    <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Puan</span>
-                    <span id="hud-score" class="title-font text-xl md:text-2xl text-cyan-400">0</span>
-                </div>
-                <div class="h-8 w-px bg-slate-700"></div>
-                <div class="flex flex-col">
-                    <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Para</span>
-                    <span id="hud-money" class="title-font text-xl md:text-2xl text-emerald-400">$0</span>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-2 bg-slate-950/60 px-3.5 py-1.5 rounded-2xl border border-slate-800">
-                <span class="title-font text-xs text-rose-400 tracking-wider font-bold">CAN</span>
-                <div id="hud-hearts" class="flex gap-1.5 items-center"></div>
-            </div>
+        <div class="flex flex-col gap-2.5 w-full mt-2">
+            <button id="btn-resume" class="w-full py-3 bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 active:scale-95 text-white title-font text-base rounded-xl shadow-lg transition-all">
+                ▶ Devam Et
+            </button>
+            <button id="btn-pause-settings" class="w-full py-3 bg-slate-800 hover:bg-slate-700 active:scale-95 text-gray-200 title-font text-base rounded-xl transition-all border border-slate-700">
+                ⚙️ Ayarlar
+            </button>
+            <button id="btn-pause-restart" class="w-full py-3 bg-amber-600 hover:bg-amber-500 active:scale-95 text-white title-font text-base rounded-xl shadow-lg transition-all">
+                🔄 Yeniden Başlat
+            </button>
+            <button id="btn-pause-menu" class="w-full py-3 bg-rose-600 hover:bg-rose-500 active:scale-95 text-white title-font text-base rounded-xl shadow-lg transition-all">
+                🏠 Ana Menüye Dön
+            </button>
         </div>
+    </div>
+</div>
+             <!-- OYUN İÇİ ÜST BAR -->
+<div id="game-hud" class="w-full p-4 flex items-center justify-between bg-slate-900/80 border-b border-slate-800/80 z-20 backdrop-blur-sm select-none hidden">
+    <div class="flex items-center gap-4">
+        <div class="flex flex-col">
+            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Puan</span>
+            <span id="hud-score" class="title-font text-xl md:text-2xl text-cyan-400">0</span>
+        </div>
+        <div class="h-8 w-px bg-slate-700"></div>
+        <div class="flex flex-col">
+            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Para</span>
+            <span id="hud-money" class="title-font text-xl md:text-2xl text-emerald-400">$0</span>
+        </div>
+        <div class="h-8 w-px bg-slate-700"></div>
+        <div class="flex flex-col">
+            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Can</span>
+            <div id="hud-hearts" class="flex gap-1 items-center mt-0.5"></div>
+        </div>
+    </div>
 
+    <!-- Durdur / Menü Butonu -->
+    <button id="btn-pause-open" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 active:scale-95 text-white rounded-xl border border-slate-700 shadow-lg transition-all flex items-center gap-2 text-sm font-semibold">
+        <span>⏸ Menü</span>
+    </button>
+</div>
         <!-- OYUN KANVASI -->
         <div id="game-canvas-container" class="relative flex-1 w-full overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 hidden">
             <canvas id="gameCanvas" class="w-full h-full block cursor-crosshair"></canvas>
@@ -513,6 +537,12 @@
         const rangeMusic = document.getElementById('range-music');
         const valMusic = document.getElementById('val-music');
         const rangeSfx = document.getElementById('range-sfx');
+        const btnPauseOpen = document.getElementById('btn-pause-open');
+        const pauseScreen = document.getElementById('pause-screen');
+        const btnResume = document.getElementById('btn-resume');
+        const btnPauseSettings = document.getElementById('btn-pause-settings');
+        const btnPauseRestart = document.getElementById('btn-pause-restart');
+        const btnPauseMenu = document.getElementById('btn-pause-menu');
         const valSfx = document.getElementById('val-sfx');
 
         rangeMusic.addEventListener('input', (e) => {
@@ -556,6 +586,41 @@
         });
         btnStoreBack.addEventListener('click', () => storeScreen.classList.add('hidden'));
 
+        // Menü / Durdur butonuna basınca oyunu durdur ve pencereyi aç
+btnPauseOpen.addEventListener('click', () => {
+    gameState = 'PAUSED';
+    soundEngine.stopChiptuneMusic();
+    pauseScreen.classList.remove('hidden');
+});
+
+// Oyuna devam et
+btnResume.addEventListener('click', () => {
+    pauseScreen.classList.add('hidden');
+    soundEngine.startChiptuneMusic();
+    gameState = 'PLAYING';
+    requestAnimationFrame(gameLoop);
+});
+
+// Durdurma menüsünden ayarlara git
+btnPauseSettings.addEventListener('click', () => {
+    settingsScreen.classList.remove('hidden');
+});
+
+// Yeniden başlat
+btnPauseRestart.addEventListener('click', () => {
+    pauseScreen.classList.add('hidden');
+    soundEngine.startChiptuneMusic();
+    startGame();
+});
+
+// Ana menüye dön
+btnPauseMenu.addEventListener('click', () => {
+    pauseScreen.classList.add('hidden');
+    gameHud.classList.add('hidden');
+    gameCanvasContainer.classList.add('hidden');
+    mainMenu.classList.remove('hidden');
+});
+        
         tabChars.addEventListener('click', () => {
             tabChars.className = "px-6 py-2.5 title-font text-lg rounded-xl bg-cyan-600 text-white shadow-lg transition-all";
             tabSlippers.className = "px-6 py-2.5 title-font text-lg rounded-xl bg-slate-800 text-gray-400 hover:text-white transition-all";
@@ -834,6 +899,7 @@
             gameTime++;
             spawnTimer++;
             if (spawnTimer >= bugSpawnInterval) {
+                
                 spawnTimer = 0;
                 // Orta yavaşlıkta, ideal grup boyutu (2 veya 3 böcek aynı anda)
                 const count = Math.random() < 0.7 ? 2 : 3;
