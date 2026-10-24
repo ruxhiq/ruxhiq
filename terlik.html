@@ -192,51 +192,54 @@
                 </div>
             </div>
         </div>
-                <!-- OYUN İÇİ DURDURMA / MENÜ EKRANI -->
-<div id="pause-screen" class="absolute inset-0 z-50 hidden flex flex-col items-center justify-center p-6 bg-black/80 backdrop-blur-md">
-    <div class="flex flex-col items-center max-w-xs w-full bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-2xl text-center gap-4">
-        <h2 class="title-font text-2xl text-cyan-400">Oyun Durduruldu</h2>
 
-        <div class="flex flex-col gap-2.5 w-full mt-2">
-            <button id="btn-resume" class="w-full py-3 bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 active:scale-95 text-white title-font text-base rounded-xl shadow-lg transition-all">
-                ▶ Devam Et
-            </button>
-            <button id="btn-pause-settings" class="w-full py-3 bg-slate-800 hover:bg-slate-700 active:scale-95 text-gray-200 title-font text-base rounded-xl transition-all border border-slate-700">
-                ⚙️ Ayarlar
-            </button>
-            <button id="btn-pause-restart" class="w-full py-3 bg-amber-600 hover:bg-amber-500 active:scale-95 text-white title-font text-base rounded-xl shadow-lg transition-all">
-                🔄 Yeniden Başlat
-            </button>
-            <button id="btn-pause-menu" class="w-full py-3 bg-rose-600 hover:bg-rose-500 active:scale-95 text-white title-font text-base rounded-xl shadow-lg transition-all">
-                🏠 Ana Menüye Dön
-            </button>
-        </div>
-    </div>
-</div>
-             <!-- OYUN İÇİ ÜST BAR -->
-<div id="game-hud" class="w-full p-4 flex items-center justify-between bg-slate-900/80 border-b border-slate-800/80 z-20 backdrop-blur-sm select-none hidden">
-    <div class="flex items-center gap-4">
-        <div class="flex flex-col">
-            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Puan</span>
-            <span id="hud-score" class="title-font text-xl md:text-2xl text-cyan-400">0</span>
-        </div>
-        <div class="h-8 w-px bg-slate-700"></div>
-        <div class="flex flex-col">
-            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Para</span>
-            <span id="hud-money" class="title-font text-xl md:text-2xl text-emerald-400">$0</span>
-        </div>
-        <div class="h-8 w-px bg-slate-700"></div>
-        <div class="flex flex-col">
-            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Can</span>
-            <div id="hud-hearts" class="flex gap-1 items-center mt-0.5"></div>
-        </div>
-    </div>
+        <!-- OYUN İÇİ DURDURMA / MENÜ EKRANI -->
+        <div id="pause-screen" class="absolute inset-0 z-50 hidden flex flex-col items-center justify-center p-6 bg-black/80 backdrop-blur-md">
+            <div class="flex flex-col items-center max-w-xs w-full bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-2xl text-center gap-4">
+                <h2 class="title-font text-2xl text-cyan-400">Oyun Durduruldu</h2>
 
-    <!-- Durdur / Menü Butonu -->
-    <button id="btn-pause-open" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 active:scale-95 text-white rounded-xl border border-slate-700 shadow-lg transition-all flex items-center gap-2 text-sm font-semibold">
-        <span>⏸ Menü</span>
-    </button>
-</div>
+                <div class="flex flex-col gap-2.5 w-full mt-2">
+                    <button id="btn-resume" class="w-full py-3 bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 active:scale-95 text-white title-font text-base rounded-xl shadow-lg transition-all">
+                        ▶ Devam Et
+                    </button>
+                    <button id="btn-pause-settings" class="w-full py-3 bg-slate-800 hover:bg-slate-700 active:scale-95 text-gray-200 title-font text-base rounded-xl transition-all border border-slate-700">
+                        ⚙️ Ayarlar
+                    </button>
+                    <button id="btn-pause-restart" class="w-full py-3 bg-amber-600 hover:bg-amber-500 active:scale-95 text-white title-font text-base rounded-xl shadow-lg transition-all">
+                        🔄 Yeniden Başlat
+                    </button>
+                    <button id="btn-pause-menu" class="w-full py-3 bg-rose-600 hover:bg-rose-500 active:scale-95 text-white title-font text-base rounded-xl shadow-lg transition-all">
+                        🏠 Ana Menüye Dön
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- OYUN İÇİ ÜST BAR -->
+        <div id="game-hud" class="w-full p-4 flex items-center justify-between bg-slate-900/80 border-b border-slate-800/80 z-20 backdrop-blur-sm select-none hidden">
+            <div class="flex items-center gap-4">
+                <div class="flex flex-col">
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Puan</span>
+                    <span id="hud-score" class="title-font text-xl md:text-2xl text-cyan-400">0</span>
+                </div>
+                <div class="h-8 w-px bg-slate-700"></div>
+                <div class="flex flex-col">
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Para</span>
+                    <span id="hud-money" class="title-font text-xl md:text-2xl text-emerald-400">$0</span>
+                </div>
+                <div class="h-8 w-px bg-slate-700"></div>
+                <div class="flex flex-col">
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Can</span>
+                    <div id="hud-hearts" class="flex gap-1 items-center mt-0.5"></div>
+                </div>
+            </div>
+
+            <!-- Durdur / Menü Butonu -->
+            <button id="btn-pause-open" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 active:scale-95 text-white rounded-xl border border-slate-700 shadow-lg transition-all flex items-center gap-2 text-sm font-semibold">
+                <span>⏸ Menü</span>
+            </button>
+        </div>
+
         <!-- OYUN KANVASI -->
         <div id="game-canvas-container" class="relative flex-1 w-full overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 hidden">
             <canvas id="gameCanvas" class="w-full h-full block cursor-crosshair"></canvas>
@@ -437,16 +440,17 @@
 
         const soundEngine = new SoundEngine();
 
-     const gameData = {
-    playerName: "",
-    score: 0,
-    money: 0,
-    lives: 3,
-    selectedChar: 'spiderman',
-    selectedSlipper: 'siyah',
-    unlockedChars: ['spiderman'],
-    unlockedSlippers: ['siyah']
-};
+        const gameData = {
+            playerName: "",
+            score: 0,
+            money: 0,
+            lives: 3,
+            selectedChar: 'spiderman',
+            selectedSlipper: 'siyah',
+            unlockedChars: ['spiderman'],
+            unlockedSlippers: ['siyah'],
+            highScores: []
+        };
 
         const CHARACTERS = [
             { id: 'spiderman', name: 'Spider-Man', price: 0, desc: 'Efsane Lider', symbol: '🕷️' },
@@ -469,8 +473,9 @@
             { id: 'altin', name: 'Altın Terlik', price: 500, color: '#fbbf24' }
         ];
 
+        // Oturum kapandığında/sekme kapatıldığında verilerin sıfırlanması için sessionStorage kullanıldı
         function loadSavedGame() {
-            const saved = localStorage.getItem('ruxhiq_spider_save');
+            const saved = sessionStorage.getItem('ruxhiq_spider_save');
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
@@ -486,7 +491,7 @@
         }
 
         function saveGame() {
-            localStorage.setItem('ruxhiq_spider_save', JSON.stringify({
+            sessionStorage.setItem('ruxhiq_spider_save', JSON.stringify({
                 playerName: gameData.playerName,
                 money: gameData.money,
                 selectedChar: gameData.selectedChar,
@@ -498,33 +503,34 @@
         }
 
         // KÜRESEL (ONLINE) SKOR TABLOSU FONKSİYONLARI
-const API_URL = 'https://6adb6fbe3b7e90b8208fef15.mockapi.io/api/v1/leaderboard';
+        const API_URL = 'https://6adb6fbe3b7e90b8208fef15.mockapi.io/api/v1/leaderboard';
 
-async function fetchOnlineLeaderboard() {
-    try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-        gameData.highScores = data.sort((a, b) => b.score - a.score);
-        renderLeaderboardUI();
-    } catch (error) {
-        console.error("Küresel skorlar çekilemedi:", error);
-        lbList.innerHTML = `<div class="p-4 text-center text-rose-400 text-sm bg-slate-900/40 rounded-2xl border border-slate-800">İnternet bağlantısı kurulamadı!</div>`;
-    }
-}
+        async function fetchOnlineLeaderboard() {
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                gameData.highScores = data.sort((a, b) => b.score - a.score);
+                renderLeaderboardUI();
+            } catch (error) {
+                console.error("Küresel skorlar çekilemedi:", error);
+                lbList.innerHTML = `<div class="p-4 text-center text-rose-400 text-sm bg-slate-900/40 rounded-2xl border border-slate-800">İnternet bağlantısı kurulamadı!</div>`;
+            }
+        }
 
-async function submitScoreOnline(playerName, scoreVal) {
-    if (scoreVal <= 0) return;
-    try {
-        await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: playerName, score: scoreVal })
-        });
-        fetchOnlineLeaderboard();
-    } catch (error) {
-        console.error("Skor sunucuya kaydedilemedi:", error);
-    }
-}
+        async function submitScoreOnline(playerName, scoreVal) {
+            if (scoreVal <= 0) return;
+            try {
+                await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: playerName, score: scoreVal })
+                });
+                fetchOnlineLeaderboard(); // Skor eklendikten hemen sonra tabloyu güncelle
+            } catch (error) {
+                console.error("Skor sunucuya kaydedilemedi:", error);
+            }
+        }
+
         loadSavedGame();
 
         const nameScreen = document.getElementById('name-screen');
@@ -593,7 +599,6 @@ async function submitScoreOnline(playerName, scoreVal) {
         btnSaveName.addEventListener('click', () => {
             const name = playerNameInput.value.trim();
             if (!name) {
-                alert("Lütfen geçerli bir oyuncu adı gir!");
                 return;
             }
             gameData.playerName = name;
@@ -613,40 +618,35 @@ async function submitScoreOnline(playerName, scoreVal) {
         });
         btnStoreBack.addEventListener('click', () => storeScreen.classList.add('hidden'));
 
-        // Menü / Durdur butonuna basınca oyunu durdur ve pencereyi aç
-btnPauseOpen.addEventListener('click', () => {
-    gameState = 'PAUSED';
-    soundEngine.stopChiptuneMusic();
-    pauseScreen.classList.remove('hidden');
-});
+        btnPauseOpen.addEventListener('click', () => {
+            gameState = 'PAUSED';
+            soundEngine.stopChiptuneMusic();
+            pauseScreen.classList.remove('hidden');
+        });
 
-// Oyuna devam et
-btnResume.addEventListener('click', () => {
-    pauseScreen.classList.add('hidden');
-    soundEngine.startChiptuneMusic();
-    gameState = 'PLAYING';
-    requestAnimationFrame(gameLoop);
-});
+        btnResume.addEventListener('click', () => {
+            pauseScreen.classList.add('hidden');
+            soundEngine.startChiptuneMusic();
+            gameState = 'PLAYING';
+            requestAnimationFrame(gameLoop);
+        });
 
-// Durdurma menüsünden ayarlara git
-btnPauseSettings.addEventListener('click', () => {
-    settingsScreen.classList.remove('hidden');
-});
+        btnPauseSettings.addEventListener('click', () => {
+            settingsScreen.classList.remove('hidden');
+        });
 
-// Yeniden başlat
-btnPauseRestart.addEventListener('click', () => {
-    pauseScreen.classList.add('hidden');
-    soundEngine.startChiptuneMusic();
-    startGame();
-});
+        btnPauseRestart.addEventListener('click', () => {
+            pauseScreen.classList.add('hidden');
+            soundEngine.startChiptuneMusic();
+            startGame();
+        });
 
-// Ana menüye dön
-btnPauseMenu.addEventListener('click', () => {
-    pauseScreen.classList.add('hidden');
-    gameHud.classList.add('hidden');
-    gameCanvasContainer.classList.add('hidden');
-    mainMenu.classList.remove('hidden');
-});
+        btnPauseMenu.addEventListener('click', () => {
+            pauseScreen.classList.add('hidden');
+            gameHud.classList.add('hidden');
+            gameCanvasContainer.classList.add('hidden');
+            mainMenu.classList.remove('hidden');
+        });
         
         tabChars.addEventListener('click', () => {
             tabChars.className = "px-6 py-2.5 title-font text-lg rounded-xl bg-cyan-600 text-white shadow-lg transition-all";
@@ -707,8 +707,6 @@ btnPauseMenu.addEventListener('click', () => {
                             saveGame();
                             renderStore();
                             soundEngine.playCoinSound();
-                        } else {
-                            alert("Yetersiz para!");
                         }
                     }
                 });
@@ -748,8 +746,6 @@ btnPauseMenu.addEventListener('click', () => {
                             saveGame();
                             renderStore();
                             soundEngine.playCoinSound();
-                        } else {
-                            alert("Yetersiz para!");
                         }
                     }
                 });
@@ -757,7 +753,7 @@ btnPauseMenu.addEventListener('click', () => {
             });
         }
 
-      function renderLeaderboardUI() {
+        function renderLeaderboardUI() {
             lbMyName.innerText = gameData.playerName || "Ferix";
             let myMaxScore = 0;
             if (gameData.highScores && gameData.highScores.length > 0) {
@@ -802,8 +798,9 @@ btnPauseMenu.addEventListener('click', () => {
         let bugs = [];
         let floatingTexts = [];
         let spawnTimer = 0;
-        let bugSpawnInterval = 130; // Dengeli başlangıç hızı ve sıklığı
+        let bugSpawnInterval = 130;
         let gameTime = 0;
+        let lastFireTime = 0; // Space tuşu spamlanmasını engellemek için cooldown değişkeni
 
         function resizeCanvas() {
             const container = canvas.parentElement;
@@ -823,9 +820,9 @@ btnPauseMenu.addEventListener('click', () => {
             startGame();
         });
 
-       function startGame() {
+        function startGame() {
             score = 0;
-            money = gameData.money; // Kayıtlı paran oyuna aktarılıyor
+            money = gameData.money;
             lives = 3;
             slippers = [];
             waterSplashes = [];
@@ -834,6 +831,7 @@ btnPauseMenu.addEventListener('click', () => {
             spawnTimer = 0;
             bugSpawnInterval = 130;
             gameTime = 0;
+            lastFireTime = 0;
             gameState = 'PLAYING';
             updateHud();
             requestAnimationFrame(gameLoop);
@@ -854,6 +852,7 @@ btnPauseMenu.addEventListener('click', () => {
 
         const keys = {};
         window.addEventListener('keydown', (e) => {
+            if (e.repeat) return; // Tuşun basılı tutularak spam yapmasını engeller
             keys[e.key] = true;
             if (e.key === ' ' || e.key === 'ArrowUp') {
                 if (gameState === 'PLAYING') fireSlipper();
@@ -863,15 +862,27 @@ btnPauseMenu.addEventListener('click', () => {
             keys[e.key] = false;
         });
 
-        document.getElementById('touch-left').addEventListener('touchstart', () => keys['ArrowLeft'] = true);
-        document.getElementById('touch-left').addEventListener('touchend', () => keys['ArrowLeft'] = false);
-        document.getElementById('touch-right').addEventListener('touchstart', () => keys['ArrowRight'] = true);
-        document.getElementById('touch-right').addEventListener('touchend', () => keys['ArrowRight'] = false);
+        // Mobil dokunmatik kontroller için pointer olayları eklendi
+        const touchLeft = document.getElementById('touch-left');
+        const touchRight = document.getElementById('touch-right');
+
+        touchLeft.addEventListener('pointerdown', () => keys['ArrowLeft'] = true);
+        touchLeft.addEventListener('pointerup', () => keys['ArrowLeft'] = false);
+        touchLeft.addEventListener('pointerleave', () => keys['ArrowLeft'] = false);
+
+        touchRight.addEventListener('pointerdown', () => keys['ArrowRight'] = true);
+        touchRight.addEventListener('pointerup', () => keys['ArrowRight'] = false);
+        touchRight.addEventListener('pointerleave', () => keys['ArrowRight'] = false);
+
         document.getElementById('touch-fire').addEventListener('click', () => {
             if (gameState === 'PLAYING') fireSlipper();
         });
 
         function fireSlipper() {
+            const now = Date.now();
+            if (now - lastFireTime < 180) return; // 180ms cooldown sınırı
+            lastFireTime = now;
+
             soundEngine.playThrowSound();
             slippers.push({
                 x: player.x + player.w / 2 - 14,
@@ -929,9 +940,7 @@ btnPauseMenu.addEventListener('click', () => {
             gameTime++;
             spawnTimer++;
             if (spawnTimer >= bugSpawnInterval) {
-                
                 spawnTimer = 0;
-                // Orta yavaşlıkta, ideal grup boyutu (2 veya 3 böcek aynı anda)
                 const count = Math.random() < 0.7 ? 2 : 3;
                 for (let i = 0; i < count; i++) {
                     spawnBug();
@@ -953,7 +962,6 @@ btnPauseMenu.addEventListener('click', () => {
                 s.y -= s.speed;
                 s.angle += s.spinSpeed;
 
-                // Terlik arkasından etrafa su damlacıkları saçma efekti
                 if (Math.random() < 0.7) {
                     waterSplashes.push({
                         x: s.x + s.w/2 + (Math.random() * 18 - 9),
@@ -1011,10 +1019,10 @@ btnPauseMenu.addEventListener('click', () => {
                         score += pts;
                         if (b.rewardMoney > 0) {
                             money += b.rewardMoney;
-                            gameData.money = money; // Parayı anında ana objeye işliyoruz
-                            saveGame();             // Tarayıcıya kalıcı olarak kaydediyoruz
+                            gameData.money = money;
+                            saveGame();
                             addFloatingText(`+${pts} Puan | +$${b.rewardMoney}`, b.x, b.y, '#34d399');
-                 } else {
+                        } else {
                             addFloatingText(`+${pts} Puan`, b.x, b.y, '#38bdf8');
                         }
 
@@ -1069,7 +1077,6 @@ btnPauseMenu.addEventListener('click', () => {
             requestAnimationFrame(gameLoop);
         }
 
-        // Sevimli Chibi Karakter Tasarımı (GöVde, Kollar, Bacaklar ve Kafalar)
         function drawCuteKawaiiCharacter(x, y, w, h, charId) {
             ctx.save();
             ctx.translate(x + w/2, y + h/2);
@@ -1087,14 +1094,12 @@ btnPauseMenu.addEventListener('click', () => {
                 primaryColor = '#22c55e'; secondaryColor = '#fef08a';
             }
 
-            // Sevimli Bacaklar
             ctx.fillStyle = secondaryColor;
             ctx.beginPath();
             ctx.roundRect(-14, 26, 10, 16, [4]);
             ctx.roundRect(4, 26, 10, 16, [4]);
             ctx.fill();
 
-            // Gövde
             ctx.fillStyle = primaryColor;
             ctx.beginPath();
             ctx.roundRect(-18, 2, 36, 28, [10]);
@@ -1103,14 +1108,12 @@ btnPauseMenu.addEventListener('click', () => {
             ctx.lineWidth = 2;
             ctx.stroke();
 
-            // Kollar
             ctx.fillStyle = primaryColor;
             ctx.beginPath();
             ctx.roundRect(-26, 6, 8, 18, [4]);
             ctx.roundRect(18, 6, 8, 18, [4]);
             ctx.fill();
 
-            // Kafa
             ctx.fillStyle = primaryColor;
             if (charId === 'whitetiger') ctx.fillStyle = '#ffffff';
             if (charId === 'powermand') ctx.fillStyle = '#d97706';
@@ -1122,7 +1125,6 @@ btnPauseMenu.addEventListener('click', () => {
             ctx.lineWidth = 2.5;
             ctx.stroke();
 
-            // Gözler ve Maskeler
             if (charId === 'spiderman') {
                 ctx.fillStyle = '#ffffff';
                 ctx.beginPath(); ctx.ellipse(-11, -16, 10, 14, -0.25, 0, Math.PI*2); ctx.fill();
@@ -1159,7 +1161,6 @@ btnPauseMenu.addEventListener('click', () => {
             ctx.restore();
         }
 
-        // Dönen, su damlacıkları saçan terlik
         function drawSpinningSlipper(x, y, w, h, angle, type) {
             ctx.save();
             ctx.translate(x + w/2, y + h/2);
@@ -1186,7 +1187,6 @@ btnPauseMenu.addEventListener('click', () => {
             ctx.restore();
         }
 
-        // Sevimli Kawaii Hamamböceği (Antenleri her zaman aşağıya, oyuncuya bakar)
         function drawKawaiiBug(x, y, w, h, type) {
             ctx.save();
             ctx.translate(x + w/2, y + h/2);
@@ -1201,26 +1201,21 @@ btnPauseMenu.addEventListener('click', () => {
                 bodyColor = '#dc2626'; accentColor = '#7f1d1d';
             }
 
-            // Gövde
             ctx.fillStyle = bodyColor;
             ctx.beginPath(); ctx.ellipse(0, 0, w/2.2, h/2, 0, 0, Math.PI*2); ctx.fill();
             ctx.strokeStyle = accentColor; ctx.lineWidth = 2; ctx.stroke();
 
-            // Kabuk çizgileri
             ctx.strokeStyle = accentColor; ctx.lineWidth = 1.5;
             ctx.beginPath(); ctx.moveTo(0, -h/2 + 4); ctx.lineTo(0, h/2 - 4); ctx.stroke();
 
-            // Baş Kısım (Aşağıda, oyuncuya bakan yön)
             ctx.fillStyle = bodyColor;
             ctx.beginPath(); ctx.arc(0, h/2 - 6, w/3.2, 0, Math.PI*2); ctx.fill();
             ctx.strokeStyle = accentColor; ctx.lineWidth = 2; ctx.stroke();
 
-            // Antenler oyuncuya (aşağıya) doğru kıvrılır
             ctx.strokeStyle = accentColor; ctx.lineWidth = 2;
             ctx.beginPath(); ctx.moveTo(-4, h/2 - 2); ctx.quadraticCurveTo(-12, h/2 + 10, -16, h/2 + 6); ctx.stroke();
             ctx.beginPath(); ctx.moveTo(4, h/2 - 2); ctx.quadraticCurveTo(12, h/2 + 10, 16, h/2 + 6); ctx.stroke();
 
-            // Büyük Sevimli Parlak Gözler
             ctx.fillStyle = '#ffffff';
             ctx.beginPath(); ctx.arc(-5, h/2 - 6, 4.5, 0, Math.PI*2); ctx.fill();
             ctx.beginPath(); ctx.arc(5, h/2 - 6, 4.5, 0, Math.PI*2); ctx.fill();
@@ -1228,12 +1223,10 @@ btnPauseMenu.addEventListener('click', () => {
             ctx.beginPath(); ctx.arc(-5, h/2 - 6, 2, 0, Math.PI*2); ctx.fill();
             ctx.beginPath(); ctx.arc(5, h/2 - 6, 2, 0, Math.PI*2); ctx.fill();
 
-            // Tatlı Pembe Yanaklar
             ctx.fillStyle = 'rgba(244, 63, 94, 0.6)';
             ctx.beginPath(); ctx.arc(-9, h/2 - 3, 2.5, 0, Math.PI*2); ctx.fill();
             ctx.beginPath(); ctx.arc(9, h/2 - 3, 2.5, 0, Math.PI*2); ctx.fill();
 
-            // Minik Ayaklar
             ctx.strokeStyle = accentColor; ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.moveTo(-w/2, -8); ctx.lineTo(-w/2 - 6, -4);
@@ -1249,9 +1242,9 @@ btnPauseMenu.addEventListener('click', () => {
             gameState = 'GAMEOVER';
             soundEngine.stopChiptuneMusic();
             
-           if (score > 0) {
-    submitScoreOnline(gameData.playerName || "Ferix", score);
-}
+            if (score > 0) {
+                submitScoreOnline(gameData.playerName || "Ferix", score);
+            }
 
             gameOverPlayer.innerText = `Oyuncu: ${gameData.playerName || "Ferix"}`;
             finalScore.innerText = score;
@@ -1266,13 +1259,13 @@ btnPauseMenu.addEventListener('click', () => {
             gameOverScreen.classList.remove('hidden');
         }
 
-                btnContinue.addEventListener('click', () => {
-                    if (money >= 50) {
-                        money -= 50;
-                        gameData.money = money; // Harcanan parayı düşüp kaydediyoruz
-                        saveGame();
-                        lives = 3;
-                     updateHud();
+        btnContinue.addEventListener('click', () => {
+            if (money >= 50) {
+                money -= 50;
+                gameData.money = money;
+                saveGame();
+                lives = 3;
+                updateHud();
                 gameOverScreen.classList.add('hidden');
                 soundEngine.startChiptuneMusic();
                 gameState = 'PLAYING';
